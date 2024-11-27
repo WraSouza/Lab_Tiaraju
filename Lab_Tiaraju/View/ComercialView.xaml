@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Lab_Tiaraju.View.ComercialView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
+    Title="ComercialView"
+    x:DataType="mvvm:ComercialViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="90" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserratBold" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="15"
+        RowDefinitions="150,*,auto">
+
+        <Image
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            Source="logotiaraju.png" />
+
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid
+                ColumnDefinitions="*,*"
+                RowDefinitions="*,*"
+                RowSpacing="60"
+                VerticalOptions="CenterAndExpand">
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                    <Image Source="itemsap.png" />
+                    <Label HorizontalTextAlignment="Center" Text="Itens SAP" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                    <Image Source="adduser.png" />
+                    <Label HorizontalTextAlignment="Center" Text="Adicionar Cliente" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                    <Image Source="onlineshop.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToLojaVirtualViewCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label HorizontalTextAlignment="Center" Text="Loja Virtual" />
+                </VerticalStackLayout>
+
+            </Grid>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

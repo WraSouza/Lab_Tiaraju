@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Lab_Tiaraju.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lab_Tiaraju"
+    xmlns:view="clr-namespace:Lab_Tiaraju.View"
+    Title="Lab_Tiaraju"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="False">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate view:LoginView}"
+        Route="MainPage" />
+
+    <TabBar>
+        <Tab
+            Title="Início"
+            Icon="home.png"
+            Route="HomeView">
+            <ShellContent ContentTemplate="{DataTemplate view:HomeView}" />
+        </Tab>
+
+        <Tab
+            Title="Setores"
+            Icon="setores.png"
+            Route="DepartmentView">
+            <ShellContent ContentTemplate="{DataTemplate view:DepartmentsView}" />
+        </Tab>
+
+
+        <!--<Tab Title="Perfil" Route="ProfileView">
+            <ShellContent ContentTemplate="{DataTemplate comercial:InsertBusinessPartnerView}" />
+        </Tab>-->
+
+    </TabBar>
+
+
+</Shell>
