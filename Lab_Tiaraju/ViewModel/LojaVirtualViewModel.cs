@@ -7,12 +7,7 @@ using System.Collections.ObjectModel;
 namespace Lab_Tiaraju.ViewModel
 {
     public partial class LojaVirtualViewModel : ObservableObject
-    {
-        [ObservableProperty]
-        string? maisVendido = string.Empty;
-
-        [ObservableProperty]
-        string menosVendido;
+    {       
 
         [ObservableProperty]
         string qtdyTotal = string.Empty;
@@ -36,9 +31,9 @@ namespace Lab_Tiaraju.ViewModel
 
             List<string> itemsName = [];
 
-            var allSales = await _salesMagento.GetAllSalesAsync();           
-
-            qtdyTotal = allSales.Count.ToString();
+            var allSales = await _salesMagento.GetAllSalesAsync();
+            
+            QtdyTotal = allSales.Count.ToString();
 
             for (int i = 0; i < allSales.Count; i++)
             {
@@ -90,12 +85,7 @@ namespace Lab_Tiaraju.ViewModel
 
                 ItensMenosVdendidos.Add(chartData);
             }
-
-            maisVendido = newChartData[0].Name;
-
-            int indiceMaximo = newChartData.Count;
-
-            menosVendido = newChartData[indiceMaximo - 1].Name;
+          
         }            
 
         
