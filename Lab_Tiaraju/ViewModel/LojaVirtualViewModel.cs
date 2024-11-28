@@ -14,6 +14,9 @@ namespace Lab_Tiaraju.ViewModel
         [ObservableProperty]
         string menosVendido;
 
+        [ObservableProperty]
+        string qtdyTotal = string.Empty;
+
         public ObservableCollection<ChartData> DatasFromMagento { get; set; } = new();
 
         public ObservableCollection<ChartData> ItensMenosVdendidos { get; set; } = new();
@@ -33,7 +36,9 @@ namespace Lab_Tiaraju.ViewModel
 
             List<string> itemsName = [];
 
-            var allSales = await _salesMagento.GetAllSalesAsync();
+            var allSales = await _salesMagento.GetAllSalesAsync();           
+
+            qtdyTotal = allSales.Count.ToString();
 
             for (int i = 0; i < allSales.Count; i++)
             {

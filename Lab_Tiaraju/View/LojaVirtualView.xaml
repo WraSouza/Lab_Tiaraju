@@ -23,7 +23,17 @@
 
         <StackLayout>
 
-            <chart:SfCircularChart HeightRequest="400">
+            <Grid ColumnDefinitions="*,*" Margin="10,20,0,0">
+                <Border Grid.Column="0" HeightRequest="80" StrokeShape="RoundRectangle 10,10,10,10" BackgroundColor="#3B59ED">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label Text="{Binding QtdyTotal}" HorizontalTextAlignment="Center" FontSize="40" TextColor="White"/>
+                        <Label Text="Vendas Realizadas" FontSize="10" TextColor="White" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Border>
+            </Grid>
+           
+
+            <chart:SfCircularChart HeightRequest="400" Margin="0,30,0,0">
 
                 <chart:SfCircularChart.Title>
                     <Label HorizontalOptions="CenterAndExpand" Text="10 Itens Mais Vendidos" />
