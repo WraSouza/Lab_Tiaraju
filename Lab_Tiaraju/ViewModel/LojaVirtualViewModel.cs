@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lab_Tiaraju.Model.Entities;
 using Lab_Tiaraju.Repository.Interfaces.ReadRepositories;
 using System.Collections.ObjectModel;
@@ -22,9 +24,9 @@ namespace Lab_Tiaraju.ViewModel
         public LojaVirtualViewModel(IReadSalesMagento salesMagento)
         {
             _salesMagento = salesMagento;
-
         }
 
+        [RelayCommand]
         internal async Task GetMagentoSales()
         {
             int quantidade = 0;
@@ -32,62 +34,68 @@ namespace Lab_Tiaraju.ViewModel
             List<string> itemsName = [];
 
             var allSales = await _salesMagento.GetAllSalesAsync();
-            
-            QtdyTotal = allSales.Count.ToString();
 
-            for (int i = 0; i < allSales.Count; i++)
+            if(allSales != null)
             {
-                for (int j = 0; j < allSales[i].items.Count; j++)
-                {
-                    if (!itemsName.Contains(allSales[i].items[j].name) && allSales[i].items[j].name != "")
-                    {
-                        itemsName.Add(allSales[i].items[j].name);
-                    }
-                }
+                QtdyTotal = allSales.Count.ToString();
 
-            }
-
-            for (int i = 0; i < itemsName.Count; i++)
-            {
-                for (int j = 0; j < allSales.Count; j++)
+                for (int i = 0; i < allSales.Count; i++)
                 {
-                    for (int z = 0; z < allSales[j].items.Count; z++)
+                    for (int j = 0; j < allSales[i].items.Count; j++)
                     {
-                        if (itemsName[i].Equals(allSales[j].items[z].name))
+                        if (!itemsName.Contains(allSales[i].items[j].name) && allSales[i].items[j].name != "")
                         {
-                            quantidade = quantidade + allSales[j].items[z].qty_ordered;
+                            itemsName.Add(allSales[i].items[j].name);
                         }
                     }
 
                 }
 
-                ChartData chartData = new(itemsName[i], quantidade);
+                for (int i = 0; i < itemsName.Count; i++)
+                {
+                    for (int j = 0; j < allSales.Count; j++)
+                    {
+                        for (int z = 0; z < allSales[j].items.Count; z++)
+                        {
+                            if (itemsName[i].Equals(allSales[j].items[z].name))
+                            {
+                                quantidade = quantidade + allSales[j].items[z].qty_ordered;
+                            }
+                        }
 
-                newChartData.Add(chartData);
+                    }
 
-               // DatasFromMagento.Add(chartData);
+                    ChartData chartData = new(itemsName[i], quantidade);
 
-                quantidade = 0;
+                    newChartData.Add(chartData);
+
+                    quantidade = 0;
+                }
+
+                List<ChartData> sortedList = newChartData.OrderByDescending(x => x.Quantity).ToList();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    ChartData chartData = new(sortedList[i].Name, sortedList[i].Quantity);
+
+                    DatasFromMagento.Add(chartData);
+                }
+
+                for (int i = sortedList.Count; i > sortedList.Count - 10; i--)
+                {
+                    ChartData chartData = new(sortedList[i - 1].Name, sortedList[i - 1].Quantity);
+
+                    ItensMenosVdendidos.Add(chartData);
+                }
             }
-
-            List<ChartData> sortedList = newChartData.OrderByDescending(x => x.Quantity).ToList();
-
-            for(int i = 0; i < 10; i++)
+            else
             {
-                ChartData chartData = new(sortedList[i].Name, sortedList[i].Quantity);
+                var newtoast = Toast.Make("Não Foi Possível Buscar os Dados No Momento. Tente Mais Tarde.", CommunityToolkit.Maui.Core.ToastDuration.Long);
 
-                DatasFromMagento.Add(chartData);
-            }
-
-            for(int i = sortedList.Count; i > sortedList.Count - 10; i--)
-            {
-                ChartData chartData = new(sortedList[i-1].Name, sortedList[i-1].Quantity);
-
-                ItensMenosVdendidos.Add(chartData);
-            }
+                await newtoast.Show();
+            }            
+           
           
-        }            
-
-        
+        }        
     }
 }

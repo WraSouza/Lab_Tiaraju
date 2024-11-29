@@ -20,104 +20,119 @@
 
     <ScrollView Orientation="Vertical">
 
-
-        <StackLayout>
-
-            <Grid ColumnDefinitions="*,*" Margin="10,20,0,0">
-                <Border Grid.Column="0" HeightRequest="150" StrokeShape="RoundRectangle 10,10,10,10" BackgroundColor="#3B59ED">
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <Label Text="{Binding QtdyTotal}" HorizontalTextAlignment="Center" FontSize="40" TextColor="White"/>
-                        <Label Text="Vendas Realizadas" FontSize="10" TextColor="White" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                </Border>
-            </Grid>
-           
-
-            <chart:SfCircularChart HeightRequest="400" Margin="0,30,0,0">
-
-                <chart:SfCircularChart.Title>
-                    <Label HorizontalOptions="CenterAndExpand" Text="10 Itens Mais Vendidos" />
-                </chart:SfCircularChart.Title>
-
-                <chart:SfCircularChart.Legend>
-
-                    <chart:ChartLegend>
-                        <chart:ChartLegend.LabelStyle>
-                            <chart:ChartLegendLabelStyle FontFamily="MontserratSemibold" FontSize="10" />
-                        </chart:ChartLegend.LabelStyle>
-
-                        <chart:ChartLegend.ItemsLayout>
-                            <FlexLayout WidthRequest="400" Wrap="Wrap" />
-                        </chart:ChartLegend.ItemsLayout>
-                    </chart:ChartLegend>
-
-                </chart:SfCircularChart.Legend>
-
-                <chart:PieSeries
-                    EnableTooltip="True"
-                    ItemsSource="{Binding DatasFromMagento}"
-                    ShowDataLabels="True"
-                    XBindingPath="Name"
-                    YBindingPath="Quantity">
-
-                    <chart:PieSeries.DataLabelSettings>
-                        <chart:CircularDataLabelSettings LabelPosition="Inside" SmartLabelAlignment="Shift">
-                            <chart:CircularDataLabelSettings.LabelStyle>
-                                <chart:ChartDataLabelStyle FontFamily="MontserratSemibold" FontSize="15" />
-                            </chart:CircularDataLabelSettings.LabelStyle>
-                        </chart:CircularDataLabelSettings>
-                    </chart:PieSeries.DataLabelSettings>
-                </chart:PieSeries>
-
-            </chart:SfCircularChart>
+        <Grid>
 
 
-            <!--  Menos Vendidos  -->
-            <chart:SfCircularChart HeightRequest="400">
+            <StackLayout>
 
-                <chart:SfCircularChart.Title>
-                    <Label HorizontalOptions="CenterAndExpand" Text="10 Itens Menos Vendidos" />
-                </chart:SfCircularChart.Title>
+                <Grid Margin="10,20,0,0" ColumnDefinitions="*,*">
+                    <Border
+                        Grid.Column="0"
+                        BackgroundColor="#3B59ED"
+                        HeightRequest="150"
+                        StrokeShape="RoundRectangle 10,10,10,10">
+                        <StackLayout VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontSize="40"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding QtdyTotal}"
+                                TextColor="White" />
+                            <Label
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                Text="Vendas Realizadas"
+                                TextColor="White" />
+                        </StackLayout>
+                    </Border>
+                </Grid>
 
-                <chart:SfCircularChart.Legend>
-                    <chart:ChartLegend>
-                        <chart:ChartLegend.LabelStyle>
-                            <chart:ChartLegendLabelStyle FontFamily="MontserratSemibold" FontSize="10" />
-                        </chart:ChartLegend.LabelStyle>
 
-                        <chart:ChartLegend.ItemsLayout>
-                            <FlexLayout WidthRequest="400" Wrap="Wrap" />
-                        </chart:ChartLegend.ItemsLayout>
-                    </chart:ChartLegend>
-                </chart:SfCircularChart.Legend>
+                <chart:SfCircularChart Margin="0,30,0,0" HeightRequest="400">
 
-                <chart:PieSeries
-                    EnableTooltip="True"
-                    ItemsSource="{Binding ItensMenosVdendidos}"
-                    ShowDataLabels="True"
-                    XBindingPath="Name"
-                    YBindingPath="Quantity">
-                    <chart:PieSeries.DataLabelSettings>
-                        <chart:CircularDataLabelSettings LabelPosition="Inside" SmartLabelAlignment="Shift">
-                            <chart:CircularDataLabelSettings.LabelStyle>
-                                <chart:ChartDataLabelStyle FontFamily="MontserratSemibold" FontSize="15" />
-                            </chart:CircularDataLabelSettings.LabelStyle>
-                        </chart:CircularDataLabelSettings>
-                    </chart:PieSeries.DataLabelSettings>
-                </chart:PieSeries>
+                    <chart:SfCircularChart.Title>
+                        <Label HorizontalOptions="CenterAndExpand" Text="10 Itens Mais Vendidos" />
+                    </chart:SfCircularChart.Title>
 
-            </chart:SfCircularChart>
-        </StackLayout>
+                    <chart:SfCircularChart.Legend>
+
+                        <chart:ChartLegend>
+                            <chart:ChartLegend.LabelStyle>
+                                <chart:ChartLegendLabelStyle FontFamily="MontserratSemibold" FontSize="10" />
+                            </chart:ChartLegend.LabelStyle>
+
+                            <chart:ChartLegend.ItemsLayout>
+                                <FlexLayout WidthRequest="400" Wrap="Wrap" />
+                            </chart:ChartLegend.ItemsLayout>
+                        </chart:ChartLegend>
+
+                    </chart:SfCircularChart.Legend>
+
+                    <chart:PieSeries
+                        EnableTooltip="True"
+                        ItemsSource="{Binding DatasFromMagento}"
+                        ShowDataLabels="True"
+                        XBindingPath="Name"
+                        YBindingPath="Quantity">
+
+                        <chart:PieSeries.DataLabelSettings>
+                            <chart:CircularDataLabelSettings LabelPosition="Inside" SmartLabelAlignment="Shift">
+                                <chart:CircularDataLabelSettings.LabelStyle>
+                                    <chart:ChartDataLabelStyle FontFamily="MontserratSemibold" FontSize="15" />
+                                </chart:CircularDataLabelSettings.LabelStyle>
+                            </chart:CircularDataLabelSettings>
+                        </chart:PieSeries.DataLabelSettings>
+                    </chart:PieSeries>
+
+                </chart:SfCircularChart>
+
+
+                <!--  Menos Vendidos  -->
+                <chart:SfCircularChart HeightRequest="400">
+
+                    <chart:SfCircularChart.Title>
+                        <Label HorizontalOptions="CenterAndExpand" Text="10 Itens Menos Vendidos" />
+                    </chart:SfCircularChart.Title>
+
+                    <chart:SfCircularChart.Legend>
+                        <chart:ChartLegend>
+                            <chart:ChartLegend.LabelStyle>
+                                <chart:ChartLegendLabelStyle FontFamily="MontserratSemibold" FontSize="10" />
+                            </chart:ChartLegend.LabelStyle>
+
+                            <chart:ChartLegend.ItemsLayout>
+                                <FlexLayout WidthRequest="400" Wrap="Wrap" />
+                            </chart:ChartLegend.ItemsLayout>
+                        </chart:ChartLegend>
+                    </chart:SfCircularChart.Legend>
+
+                    <chart:PieSeries
+                        EnableTooltip="True"
+                        ItemsSource="{Binding ItensMenosVdendidos}"
+                        ShowDataLabels="True"
+                        XBindingPath="Name"
+                        YBindingPath="Quantity">
+                        <chart:PieSeries.DataLabelSettings>
+                            <chart:CircularDataLabelSettings LabelPosition="Inside" SmartLabelAlignment="Shift">
+                                <chart:CircularDataLabelSettings.LabelStyle>
+                                    <chart:ChartDataLabelStyle FontFamily="MontserratSemibold" FontSize="15" />
+                                </chart:CircularDataLabelSettings.LabelStyle>
+                            </chart:CircularDataLabelSettings>
+                        </chart:PieSeries.DataLabelSettings>
+                    </chart:PieSeries>
+
+                </chart:SfCircularChart>
+            </StackLayout>
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding GetMagentoSalesCommand.IsRunning}"
+                IsVisible="{Binding GetMagentoSalesCommand.IsRunning}"
+                VerticalOptions="Center"
+                Color="Green" />
+
+        </Grid>
 
     </ScrollView>
-
-
-
-
-
-
-
-
 
 
 </ContentPage>
