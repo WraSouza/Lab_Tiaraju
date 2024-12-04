@@ -14,7 +14,7 @@ namespace Lab_Tiaraju.ViewModel
         [ObservableProperty]
         string qtdyTotal = string.Empty;
 
-        public ObservableCollection<ChartData> DatasFromMagento { get; set; } = new();
+        public ObservableCollection<ChartData> ItensMaisVendidos { get; set; } = new();
 
         public ObservableCollection<ChartData> ItensMenosVdendidos { get; set; } = new();
 
@@ -32,6 +32,10 @@ namespace Lab_Tiaraju.ViewModel
             int quantidade = 0;
 
             List<string> itemsName = [];
+
+            var toastLoadingData = Toast.Make("Aguarde Enquanto os Dados São Carregados.", CommunityToolkit.Maui.Core.ToastDuration.Long);
+
+            await toastLoadingData.Show();
 
             var allSales = await _salesMagento.GetAllSalesAsync();
 
@@ -78,7 +82,7 @@ namespace Lab_Tiaraju.ViewModel
                 {
                     ChartData chartData = new(sortedList[i].Name, sortedList[i].Quantity);
 
-                    DatasFromMagento.Add(chartData);
+                    ItensMaisVendidos.Add(chartData);
                 }
 
                 for (int i = sortedList.Count; i > sortedList.Count - 10; i--)

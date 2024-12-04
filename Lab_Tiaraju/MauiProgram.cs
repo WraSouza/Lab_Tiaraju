@@ -24,6 +24,22 @@ namespace Lab_Tiaraju
                 .UseDevExpressCharts()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionToolkit()
+                .UseSentry(options => {
+                    // The DSN is the only required setting.
+                    options.Dsn = "https://82f9546e266ac815af3aca84863ee3f1@o4508410133479424.ingest.us.sentry.io/4508410136494080";
+
+                    // Use debug mode if you want to see what the SDK is doing.
+                    // Debug messages are written to stdout with Console.Writeline,
+                    // and are viewable in your IDE's debug console or with 'adb logcat', etc.
+                    // This option is not recommended when deploying your application.
+                    options.Debug = true;
+
+                    // Set TracesSampleRate to 1.0 to capture 100% of transactions for tracing.
+                    // We recommend adjusting this value in production.
+                    options.TracesSampleRate = 1.0;
+
+                    // Other Sentry options can be set here.
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

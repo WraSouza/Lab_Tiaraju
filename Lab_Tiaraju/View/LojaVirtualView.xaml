@@ -22,7 +22,6 @@
 
         <Grid>
 
-
             <StackLayout>
 
                 <Grid Margin="10,20,0,0" ColumnDefinitions="*,*">
@@ -69,7 +68,7 @@
 
                     <chart:PieSeries
                         EnableTooltip="True"
-                        ItemsSource="{Binding DatasFromMagento}"
+                        ItemsSource="{Binding ItensMaisVendidos}"
                         ShowDataLabels="True"
                         XBindingPath="Name"
                         YBindingPath="Quantity">
