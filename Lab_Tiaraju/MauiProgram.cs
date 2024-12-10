@@ -60,6 +60,9 @@ namespace Lab_Tiaraju
             builder.Services.AddSingleton<ItemSAPViewModel>();
             builder.Services.AddSingleton<LojaVirtualViewModel>();
             builder.Services.AddSingleton<ComercialViewModel>();
+            builder.Services.AddSingleton<TIViewModel>();
+            builder.Services.AddSingleton<SAPViewModel>();
+            builder.Services.AddSingleton<MagentoViewModel>();
 
 
             builder.Services.AddSingleton<LoginView>();
@@ -67,6 +70,9 @@ namespace Lab_Tiaraju
             builder.Services.AddSingleton<ComercialView>();
             builder.Services.AddSingleton<ItemSAPView>();
             builder.Services.AddSingleton<LojaVirtualView>();
+            builder.Services.AddSingleton<TIView>();
+            builder.Services.AddSingleton<SAPView>();
+            builder.Services.AddSingleton<MagentoView>();
 
 #if DEBUG
             builder.Logging.AddDebug();

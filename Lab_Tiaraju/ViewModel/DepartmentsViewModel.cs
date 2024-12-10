@@ -9,5 +9,9 @@ namespace Lab_Tiaraju.ViewModel
         [RelayCommand]
         public async Task GoToComercialView()
        => await Shell.Current.GoToAsync(nameof(ComercialView));
+
+        [RelayCommand]
+        public async Task GoToTIlView()
+      => await Shell.Current.GoToAsync(nameof(TIView));
     }
 }
