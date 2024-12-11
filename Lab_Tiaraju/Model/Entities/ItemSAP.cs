@@ -4,7 +4,7 @@
     {
         // [JsonProperty("odata.metadata")]
         public string odatametadata { get; set; } = string.Empty;
-        public List<Value>? value { get; set; }
+        public List<Value> value { get; set; } = [];
 
         // [JsonProperty("odata.nextLink")]
         public string odatanextLink { get; set; } = string.Empty;

@@ -3,7 +3,9 @@
     x:Class="Lab_Tiaraju.View.SAPView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="SAPView">
+    xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
+    Title="SAPView"
+    x:DataType="mvvm:SAPViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -47,9 +49,13 @@
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Grid.Row="0" Grid.Column="1">
-                        <Image Source="itemsap.png" />
+                        <Image Source="itemsap.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToItemSAPViewCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label HorizontalTextAlignment="Center" Text="Itens SAP" />
-                    </VerticalStackLayout>                                     
+                    </VerticalStackLayout>
 
                 </Grid>
 

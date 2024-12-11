@@ -14,6 +14,7 @@ namespace Lab_Tiaraju
             Routing.RegisterRoute(nameof(TIView), typeof(TIView));
             Routing.RegisterRoute(nameof(SAPView), typeof(SAPView));
             Routing.RegisterRoute(nameof(MagentoView), typeof(MagentoView));
+            Routing.RegisterRoute(nameof(ItemSAPView), typeof(ItemSAPView));
 
         }
     }

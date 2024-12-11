@@ -1,8 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Lab_Tiaraju.View;
 
 namespace Lab_Tiaraju.ViewModel
 {
-    public class SAPViewModel : ObservableObject
+    public partial class SAPViewModel : ObservableObject
     {
+        [RelayCommand]
+        public async Task GoToItemSAPView()
+      => await Shell.Current.GoToAsync(nameof(ItemSAPView));
     }
 }

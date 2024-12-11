@@ -4,7 +4,7 @@ namespace Lab_Tiaraju.Repository.ReadRepositories
 {
     public interface IReadItemsSAP
     {
-        Task<Value> GetAllItemsAsync();
+        Task<ItemSAP> GetAllItemsAsync();
         Task<ItemSAP> GetItemByCode(string  code);
     }
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
-             x:Class="Lab_Tiaraju.View.LoginView"
-             Title="LoginView"
-             x:DataType="mvvm:LoginViewModel">
+<ContentPage
+    x:Class="Lab_Tiaraju.View.LoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
+    Title="LoginView"
+    x:DataType="mvvm:LoginViewModel">
 
     <ContentPage.BindingContext>
         <mvvm:LoginViewModel />
@@ -14,7 +15,7 @@
 
     <Grid BackgroundColor="#0E7B35" RowDefinitions="*,*">
 
-        
+
 
         <Image
             Grid.Row="0"
@@ -38,12 +39,23 @@
                     Text="Login"
                     TextColor="Black" />
 
-                <inputLayout:SfTextInputLayout Hint="Nome" HeightRequest="80" ContainerType="Outlined" HelperText="Informe Seu Usuário" ContainerBackground="White">
-                    <Entry FontSize="15" Text="{Binding Name}"/>
+                <inputLayout:SfTextInputLayout
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="80"
+                    HelperText="Informe Seu Usuário"
+                    Hint="Nome">
+                    <Entry FontSize="15" Text="{Binding Name}" />
                 </inputLayout:SfTextInputLayout>
 
-                <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True" Hint="Senha" HeightRequest="80" ContainerType="Outlined" ContainerBackground="White" HelperText="Informe Sua Senha">
-                    <Entry FontSize="15" Text="{Binding Password}"/>
+                <inputLayout:SfTextInputLayout
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    EnablePasswordVisibilityToggle="True"
+                    HeightRequest="80"
+                    HelperText="Informe Sua Senha"
+                    Hint="Senha">
+                    <Entry FontSize="15" Text="{Binding Password}" />
                 </inputLayout:SfTextInputLayout>
 
 
