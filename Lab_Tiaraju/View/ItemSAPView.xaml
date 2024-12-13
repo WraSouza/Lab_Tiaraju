@@ -16,15 +16,20 @@
             HorizontalOptions="Center"
             Source="logotiaraju.png" />
 
-        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40"/>
+        <ActivityIndicator
+            HeightRequest="40"
+            HorizontalOptions="Center"
+            IsRunning="True"
+            IsVisible="{Binding IsLoading}"
+            WidthRequest="40" />
 
         <CollectionView
             Grid.Row="2"
-            EmptyView="Não Há Itens Cadastrados"           
-            VerticalOptions="FillAndExpand" 
+            EmptyView="Não Há Itens Cadastrados"
+            ItemsSource="{Binding ItemsSAP}"
             RemainingItemsThreshold="4"
             RemainingItemsThresholdReachedCommand="{Binding LoadMoreDataCommand}"
-            ItemsSource="{Binding ItemsSAP}">
+            VerticalOptions="FillAndExpand">
 
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" />

@@ -3,7 +3,9 @@
     x:Class="Lab_Tiaraju.View.MagentoView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MagentoView">
+    xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
+    Title="MagentoView"
+    x:DataType="mvvm:MagentoViewModel">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -42,7 +44,11 @@
                     VerticalOptions="Center">
 
                     <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                        <Image Source="growth.png" />
+                        <Image Source="growth.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToLojaVirtualViewCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label HorizontalTextAlignment="Center" Text="Gráfico de Vendas" />
                     </VerticalStackLayout>
 
