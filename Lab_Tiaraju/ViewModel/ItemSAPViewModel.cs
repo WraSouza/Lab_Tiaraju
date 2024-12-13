@@ -10,6 +10,7 @@ namespace Lab_Tiaraju.ViewModel
     {
         private readonly string amostra = "AMOSTRA PARA ANÁLISE";
         private int _pageSize = 20;
+        private int initialSkipIndex = 0;
 
         public ObservableCollection<Value> ItemsSAP { get; set; } = new ObservableCollection<Value>();
 
@@ -26,18 +27,17 @@ namespace Lab_Tiaraju.ViewModel
         }
 
         [RelayCommand]
-        public async void LoadMoreData()
-        {
+        public async Task LoadMoreData()
+        {            
+
             if (isLoading)
                 return;
 
             isLoading = true;
 
-            var items = await _readItems.GetAllItemsAsync();
+            var items = await _readItems.GetAllItemsAsync(initialSkipIndex.ToString());            
 
-            var recordsToBeAdded = items.value.Skip(items.value.Count).Take(_pageSize).ToList();
-
-            for (int i = 0; i < recordsToBeAdded.Count; i++)
+            for (int i = 0; i < items.value.Count; i++)
             {
                 if (items.value[i].ItemName != amostra)
                 {
@@ -47,29 +47,36 @@ namespace Lab_Tiaraju.ViewModel
             }
 
             isLoading = false;
+
+            initialSkipIndex += 20;
         }
 
         [RelayCommand]
         internal async Task GetAllItemsAsync()
         {
+            int initialIndex = 0;
             IsBusy = true;
 
             ItemsSAP.Clear();
-            var items = await _readItems.GetAllItemsAsync();               
-
-            Shell.Current.Dispatcher.Dispatch(() =>
+            var items = await _readItems.GetAllItemsAsync(initialIndex.ToString());   
+            
+            if(items.value.Count > 0)
             {
-                var recordsToBeAdded = items.value.Take(_pageSize).ToList();
-
-                for(int i = 0; i < recordsToBeAdded.Count; i++)
+                Shell.Current.Dispatcher.Dispatch(() =>
                 {
-                    if (items.value[i].ItemName != amostra)
+                    var recordsToBeAdded = items.value.Take(_pageSize).ToList();
+
+                    for (int i = 0; i < recordsToBeAdded.Count; i++)
                     {
-                        Value newItem = new Value(items.value[i].ItemCode, items.value[i].ItemName, items.value[i].BarCode, items.value[i].QuantityOnStock);
-                        ItemsSAP.Add(newItem);
+                        if (items.value[i].ItemName != amostra)
+                        {
+                            Value newItem = new Value(items.value[i].ItemCode, items.value[i].ItemName, items.value[i].BarCode, items.value[i].QuantityOnStock);
+                            ItemsSAP.Add(newItem);
+                        }
                     }
-                }
-            });
+                });
+            }
+           
 
             //for (int i = 0; i < items.value.Count; i++)
             //{
