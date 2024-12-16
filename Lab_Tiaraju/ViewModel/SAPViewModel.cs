@@ -9,5 +9,9 @@ namespace Lab_Tiaraju.ViewModel
         [RelayCommand]
         public async Task GoToItemSAPView()
       => await Shell.Current.GoToAsync(nameof(ItemSAPView));
+
+        [RelayCommand]
+        public async Task GoToAddBusinessPartnerView()
+      => await Shell.Current.GoToAsync(nameof(AddBusinessPartnerView));
     }
 }

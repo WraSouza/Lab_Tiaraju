@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Lab_Tiaraju.View.AddBusinessPartnerView"
-             Title="AddBusinessPartnerView">
+<ContentPage
+    x:Class="Lab_Tiaraju.View.AddBusinessPartnerView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Lab_Tiaraju.ViewModel"
+    Title="AddBusinessPartnerView"
+    x:DataType="mvvm:AddBusinessPartnerViewModel">
 
     <Grid
         ColumnDefinitions="*,*"
@@ -67,13 +70,13 @@
 
                 <Entry MaxLength="8" Text="{Binding Cep}" />
 
-                <Button Command="{Binding AdicionarParceiroNegocioCommand}" Text="Adicionar" />
+                <Button Command="{Binding AddBusinessPartnerCommand}" Text="Adicionar" />
 
                 <ActivityIndicator
                     Grid.Row="1"
                     HorizontalOptions="Center"
-                    IsRunning="{Binding AdicionarParceiroNegocioCommand.IsRunning}"
-                    IsVisible="{Binding AdicionarParceiroNegocioCommand.IsRunning}"
+                    IsRunning="{Binding AddBusinessPartnerCommand.IsRunning}"
+                    IsVisible="{Binding AddBusinessPartnerCommand.IsRunning}"
                     VerticalOptions="Center" />
 
             </StackLayout>

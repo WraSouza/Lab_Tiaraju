@@ -17,7 +17,6 @@ namespace Lab_Tiaraju.Repository.Implementations
 
         public async Task<ItemSAP> GetAllItemsAsync(string skipValue)
         {
-            //throw new NotImplementedException();
             try
             {
                 //return await Constants.urlSapItens

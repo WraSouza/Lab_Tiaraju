@@ -46,7 +46,7 @@
                     <VerticalStackLayout Grid.Row="0" Grid.Column="0">
                         <Image Source="growth.png">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToLojaVirtualViewCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoToLojaVirtualViewCommand}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label HorizontalTextAlignment="Center" Text="Gráfico de Vendas" />

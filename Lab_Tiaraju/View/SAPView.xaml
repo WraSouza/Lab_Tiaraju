@@ -44,7 +44,11 @@
                     VerticalOptions="Center">
 
                     <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                        <Image Source="adduser.png" />
+                        <Image Source="adduser.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToAddBusinessPartnerViewCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label HorizontalTextAlignment="Center" Text="Adicionar Cliente" />
                     </VerticalStackLayout>
 
